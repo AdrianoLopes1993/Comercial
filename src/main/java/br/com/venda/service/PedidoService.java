@@ -27,4 +27,8 @@ public class PedidoService {
 		return repository.findById(id);
 	}
 
+	public void deletarPedidoId(Long id) {
+		repository.deleteById(id);
+	}
+
 }
