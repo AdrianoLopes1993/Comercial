@@ -12,7 +12,7 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String cliente;
+	private Long codigoCliente;
 
 	private Long codigoProduto;
 
@@ -26,12 +26,12 @@ public class Pedido {
 		this.id = id;
 	}
 
-	public String getCliente() {
-		return cliente;
+	public Long getCodigoCliente() {
+		return codigoCliente;
 	}
 
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
+	public void setCodigoCliente(Long codigoCliente) {
+		this.codigoCliente = codigoCliente;
 	}
 
 	public Long getCodigoProduto() {
