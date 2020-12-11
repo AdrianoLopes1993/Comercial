@@ -14,7 +14,21 @@ public class Pedido {
 
 	private Long codigoCliente;
 
+	private String nomeCliente;
+
+	private Long cpf;
+
+	private Long telefone;
+
 	private Long codigoProduto;
+
+	private String fornecedor;
+
+	private String nomeProduto;
+
+	private Long custo;
+
+	private Long valorFinal;
 
 	private String formaPagamento;
 
@@ -34,12 +48,68 @@ public class Pedido {
 		this.codigoCliente = codigoCliente;
 	}
 
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+
+	public Long getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
+	}
+
+	public Long getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
+	}
+
 	public Long getCodigoProduto() {
 		return codigoProduto;
 	}
 
 	public void setCodigoProduto(Long codigoProduto) {
 		this.codigoProduto = codigoProduto;
+	}
+
+	public String getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(String fornecedor) {
+		this.fornecedor = fornecedor;
+	}
+
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
+	}
+
+	public Long getCusto() {
+		return custo;
+	}
+
+	public void setCusto(Long custo) {
+		this.custo = custo;
+	}
+
+	public Long getValorFinal() {
+		return valorFinal;
+	}
+
+	public void setValorFinal(Long valorFinal) {
+		this.valorFinal = valorFinal;
 	}
 
 	public String getFormaPagamento() {

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.venda.dto.ClienteDTO;
+import br.com.venda.dto.ProdutoDTO;
 import br.com.venda.model.Pedido;
 import br.com.venda.repository.PedidoRepository;
 
@@ -24,13 +25,33 @@ public class PedidoService {
 	@Value("${url.consulta.cliente}")
 	private String consultaCliente;
 
+	@Value("${url.consulta.produto}")
+	private String consultaProduto;
+
 	public Pedido salvarPedido(Pedido pedido) {
 
-		Long id = pedido.getCodigoCliente();
+		Long idCliente = pedido.getCodigoCliente();
+		ClienteDTO dtoCliente = rt.getForObject(consultaCliente + "/" + idCliente, ClienteDTO.class);
 
-		ClienteDTO dto = rt.getForObject(consultaCliente + "/" + id, ClienteDTO.class);
+		Long idProduto = pedido.getCodigoProduto();
+		ProdutoDTO dtoProduto = rt.getForObject(consultaProduto + "/" + idProduto, ProdutoDTO.class);
 
-		return repository.save(pedido);
+		Pedido ped = new Pedido();
+		ped.setCodigoCliente(pedido.getCodigoCliente());
+		ped.setCpf(dtoCliente.getCpf());
+		ped.setNomeCliente(dtoCliente.getNomeCliente());
+		ped.setTelefone(dtoCliente.getTelefone());
+
+		ped.setCodigoProduto(pedido.getCodigoProduto());
+		ped.setCusto(dtoProduto.getCusto());
+		ped.setFornecedor(dtoProduto.getFornecedor());
+		ped.setNomeProduto(dtoProduto.getNomeProduto());
+		ped.setValorFinal(dtoProduto.getValorFinal());
+
+		ped.setFormaPagamento(pedido.getFormaPagamento());
+
+		return repository.save(ped);
+
 	}
 
 	public List<Pedido> listarPedido() {
